@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Procurement Portal System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="mini_logo.png" type="image/png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+<header>
+               <!-- Dark Mode Toggle Button -->
+<button class="dark-mode-toggle" onclick="toggleDarkMode()">
+  <i class="fas fa-moon" id="dark-mode-icon"></i>
+</button> 
+
+                  <!-- NAV 1 -->
+<div class="navbar-1">
+    <div class="top-buttons">
+        <a href="#" class="btn btn-green"><i class="fa-solid fa-user-lock"></i>Paddy Sign in</a>
+        <a href="#" class="btn btn-yellow"><i class="fa-solid fa-user-lock" ></i>Miller Sign in</a>            
+        <a href="#" class="btn btn-pink"><i class="fa-solid fa-user-lock" ></i>Mustard Sign in</a>
+    </div>                
+</div>
+                  <!-- NAV 1 ENDS -->
+
+                  <!-- NAV 2 -->
+<div class="navbar-2">
+    
+    <div class="logo-bar">
+        <img src="https://opps.assam.gov.in/assets/newassets/img/mini_logo.png" alt="Logo" class="logo" />
+        <h1>Online Procurement Portal System <small><i>V2.0</i></small></h1>
+    </div>
+
+    <div class="options-bar">
+        <div class="dash">
+            <i class="fa-solid fa-chart-line"></i>
+            <a href="#" class="underline dashboard">Dashboard</a>
+        </div>
+            <a href="#" class="underline-district-wise">District Wise</a>
+            <a href="#" class="underline-PPC">PPC</a>
+       
+           <!-- Notification Dropdown -->
+        <div class="dropdown" id="notificationDropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('notificationDropdown')">Notification
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i></button>
+        <div class="dropdown-content">
+            <a href="#">Notification 1</a>
+            <a href="#">Notification 2</a>
+        </div>
+</div>
+            
+           <!-- Document Dropdown -->
+<div class="dropdown" id="documentDropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown('documentDropdown')">Document
+    <i class="fa-solid fa-chevron-down dropdown-arrow"></i></button>
+     
+    <div class="dropdown-content">
+        <a href="#">Annexure I</a>
+        <a href="#">Annexure II</a>
+        <a href="#">Annexure III</a>
+        <a href="#">SOP for Farmer Registration</a>
+        <a href="#">SOP for Miller Registration</a>
+        <a href="#">Registration Form</a>
+        </div>
+        </div>
+        <a href="#" class="underline Contact">Contact</a>
+    </div>                  
+</div>
+                  <!-- NAV 2 ENDS -->
+
+                  <!-- NAV 3  -->
+<div class="navbar-3">
+    <div class="latest-label">
+         Latest Updates
+    </div>
+                  <!-- full-width clip area behind the label -->
+    <div class="scroll-container">
+        <div class="scroll-text">
+            SOP for Farmer Registration<span class="new-badge">NEW</span>
+        </div>  
+    </div>
+</div>
+                  <!-- NAV 3 ENDS -->
+</header>
+
+                  <!-- LOGIN -->
+<main class="main-log">
+
+      
+    <div class="Login">
+        
+      <form action="">
+      <h1>Sign In</h1>
+      
+    <div class="input-box">
+
+      <input type="text" placeholder="Username*" required>
+      <i class='bx bxs-user'></i>
+
+    </div>
+      
+    <div class="input-box">
+
+      <input type="password" placeholder="Password*" required>
+      <i class='bx bxs-lock-alt' ></i>
+
+    </div>
+      
+    <div class="remember-forgot">
+
+      <label><input type="checkbox">Remember Me</label>
+      <a href="#">Forgot Password</a>
+
+    </div>
+      
+    <button type="submit" class="btn" id="logBtn">Login</button>
+      
+    <div class="register-link">
+
+      <p>Don't have an account? <a href="#">Register</a></p>
+
+    </div>
+      
+    <div class="imgcrp"></div>
+    </form>
+    </div>
+</main>
+
+                  <!-- LOGIN ENDS -->
+
+
+                  <!-- FOOTER STARTS -->
+
+<footer class="footer">
+    <p>2023 © – Developed by <span>Assam Food & Civil Supplies Corporation Ltd.</span></p>
+</footer>
+                  <!-- FOOTER ENDS -->
+<script>
+        
+        document.getElementById('logBtn').onclick = function() {alert ('Please SignIn!')};
+
+         let activeDropdown = null;
+
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            const allDropdowns = document.querySelectorAll('.dropdown');
+            
+            // Close all other dropdowns
+            allDropdowns.forEach(dd => {
+                if (dd.id !== dropdownId) {
+                    dd.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            if (activeDropdown === dropdownId) {
+                dropdown.classList.remove('active');
+                activeDropdown = null;
+            } else {
+                dropdown.classList.add('active');
+                activeDropdown = dropdownId;
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            let clickedInside = false;
+            
+            dropdowns.forEach(dropdown => {
+                if (dropdown.contains(event.target)) {
+                    clickedInside = true;
+                }
+            });
+            
+            if (!clickedInside && activeDropdown) {
+                document.getElementById(activeDropdown).classList.remove('active');
+                activeDropdown = null;
+            }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && activeDropdown) {
+                document.getElementById(activeDropdown).classList.remove('active');
+                activeDropdown = null;
+            }
+        });
+
+// Dark Mode Toggle Function
+function toggleDarkMode() {
+    const body = document.body;
+    const icon = document.getElementById('dark-mode-icon');
+    
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+    }
+}
+
+// Load Dark Mode Preference
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkMode');
+    const icon = document.getElementById('dark-mode-icon');
+    
+    if (darkModePreference === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+});
+</script>
+
+
+</body>
+</html>
